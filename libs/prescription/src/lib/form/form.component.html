@@ -1,4 +1,13 @@
 <form [formGroup]="form" class="grid">
+  <div class="col-12 text-right">
+    <p-button
+      label="Reset"
+      severity="secondary"
+      [outlined]="true"
+      (onClick)="reset()"
+    />
+  </div>
+
   <div class="col-12 md:col-6">
     <label for="patient" class="block mb-1">Patient</label>
 

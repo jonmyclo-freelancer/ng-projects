@@ -65,6 +65,14 @@ export class FormComponent {
     this.prescriptionsFormArray.removeAt(index);
   }
 
+  reset() {
+    this.form.reset();
+
+    this.prescriptionsFormArray.clear();
+
+    this.prescriptionsFormArray.push(this.getPrescriptionForm());
+  }
+
   private getPrescriptionForm() {
     return this.fb.group({
       generic: [null, Validators.required],
