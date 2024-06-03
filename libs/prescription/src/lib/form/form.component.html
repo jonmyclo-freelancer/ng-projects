@@ -1,0 +1,102 @@
+<form [formGroup]="form" class="grid">
+  <div class="col-12 md:col-6">
+    <label for="patient" class="block mb-1">Patient</label>
+
+    <input pInputText id="patient" formControlName="patient" />
+  </div>
+
+  <div class="col-12 md:col-2">
+    <label for="age" class="block mb-1">Age</label>
+
+    <input pInputText type="number" id="age" formControlName="age" />
+  </div>
+
+  <div class="col-12 md:col-4">
+    <label for="sex" class="block mb-1">Sex</label>
+
+    <p-dropdown
+      [options]="['Male', 'Female']"
+      styleClass="w-full"
+      formControlName="sex"
+    />
+  </div>
+
+  <div class="col-12">
+    <label for="address" class="block mb-1">Address</label>
+
+    <textarea
+      formControlName="address"
+      rows="3"
+      pInputTextarea
+      [autoResize]="true"
+    ></textarea>
+  </div>
+
+  <div formArrayName="prescriptions" class="col-12">
+    @for (prescriptionsForm of prescriptionsFormArray.controls; let index =
+    $index; track index) {
+    <p-divider />
+
+    <div class="flex gap-5">
+      <!-- <span>{{ index + 1 }}</span> -->
+
+      <div [formGroupName]="index" class="grid">
+        <div class="col-12 md:col-3">
+          <label for="generic" class="block mb-1">Generic</label>
+
+          <input pInputText id="generic" formControlName="generic" />
+        </div>
+
+        <div class="col-12 md:col-3">
+          <label for="brand" class="block mb-1">Brand</label>
+
+          <input pInputText id="brand" formControlName="brand" />
+        </div>
+
+        <div class="col-12 md:col-3">
+          <label for="preparation" class="block mb-1">Preparation</label>
+
+          <input pInputText id="preparation" formControlName="preparation" />
+        </div>
+
+        <div class="col-12 md:col-2">
+          <label for="type" class="block mb-1">Susp</label>
+
+          <input pInputText id="type" formControlName="type" />
+        </div>
+
+        <div class="col-12 md:col-1">
+          <label for="quantity" class="block mb-1">Qty</label>
+
+          <p-inputNumber id="quantity" formControlName="quantity" />
+        </div>
+
+        <div class="col-12">
+          <label for="instruction" class="block mb-1">Instruction</label>
+
+          <textarea
+            formControlName="instruction"
+            rows="3"
+            pInputTextarea
+            [autoResize]="true"
+          ></textarea>
+        </div>
+      </div>
+
+      @if (prescriptionsFormArray.length > 1) {
+      <p-button
+        class="align-self-center"
+        severity="danger"
+        size="small"
+        (onClick)="removePrescriptionForm(index)"
+        >&#x2715;</p-button
+      >
+      }
+    </div>
+    }
+  </div>
+
+  <div class="col-12">
+    <p-button label="Add" (onClick)="addPrescriptionForm()" />
+  </div>
+</form>

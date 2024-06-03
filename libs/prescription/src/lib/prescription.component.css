@@ -1,0 +1,19 @@
+@media print {
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  lib-form,
+  .print {
+    display: none !important;
+  }
+
+  lib-print {
+    height: 100% !important;
+  }
+}
+
+@page {
+  size: a5;
+}

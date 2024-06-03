@@ -1,0 +1,106 @@
+<article
+  class="flex flex-column justify-content-between gap-2 p-3 bg-white"
+  style="width: 148mm; height: 210mm"
+>
+  <header class="text-center">
+    <h1 class="text-2xl mt-0 mb-1">IVEE A. VILLARIN-ARNAIZ, MD, DPPS</h1>
+
+    <span class="text-lg">General Pediatrics</span>
+  </header>
+
+  <article
+    class="flex justify-content-between text-xs pb-2 border-bottom-3 border-900"
+  >
+    <div>
+      <strong>Rm 12, 2F Cebu Woman's Club Bldg.</strong>
+
+      <br />
+
+      <span>
+        B. Rodriguez St., Cebu City <br />
+        (Between CUPSI & Maternity Hospital) <br />
+        T Th S 9:00 AM - 11:00 AM <br />
+        Contact No. : 09924673047
+      </span>
+    </div>
+
+    <div>
+      <strong>Rm 4A, Cebu North General Hospital</strong>
+
+      <br />
+
+      <span>
+        Medical Arts Bldg. <br />
+        Kauswagan, Talamban, Cebu City <br />
+        M W F 9:00 AM - 11:00 AM <br />
+        Contact No. : (032) 512-6104
+      </span>
+    </div>
+  </article>
+
+  <article class="grid text-sm">
+    <div class="col-6">
+      Patient
+      <span class="font-bold ml-2">{{
+        prescription?.patient | titlecase
+      }}</span>
+    </div>
+
+    <div class="col-3">
+      Age
+      <span class="font-bold ml-2">{{ prescription?.age }}</span>
+    </div>
+
+    <div class="col-3">
+      Sex
+      <span class="font-bold ml-2">{{ prescription?.sex }}</span>
+    </div>
+
+    <div class="col-7">
+      Address
+      <span class="font-bold ml-2">{{ prescription?.address }}</span>
+    </div>
+
+    <div class="col-5 text-right">
+      Date:
+      <span class="font-bold ml-2">{{ date | date : 'MMMM d, yyyy' }}</span>
+    </div>
+
+    <div class="col-12 pt-3 pl-3">
+      <img src="prescription-icon.svg" alt="Prescription Logo" width="30" />
+    </div>
+  </article>
+
+  <article class="flex-grow-1">
+    @if (prescription?.prescriptions?.length) {
+    <ol>
+      @for (prescriptionItem of prescription?.prescriptions; track $index) {
+      <li class="mb-2">
+        {{ prescriptionItem.generic | uppercase }}
+        @if (prescriptionItem.brand) { ({{ prescriptionItem.brand }}) }
+        {{ prescriptionItem.preparation }}
+        @if (prescriptionItem.type && prescriptionItem.quantity) {susp
+        {{ prescriptionItem.type }}# {{ prescriptionItem.quantity }}}
+
+        <br />
+
+        @if (prescriptionItem.instruction) {Sig:
+        {{ prescriptionItem.instruction }}}
+      </li>
+      }
+    </ol>
+    }
+  </article>
+
+  <footer class="align-self-end text-xs">
+    <strong>IVEE A. VILLARIN-ARNAIZ, MD</strong>
+
+    <br />
+
+    <span>
+      License No. : 0117173 <br />
+      PTR No. : <br />
+      S2 No. :
+    </span>
+  </footer>
+</article>

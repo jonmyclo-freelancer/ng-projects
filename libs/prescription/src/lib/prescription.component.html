@@ -1,0 +1,18 @@
+<section class="prescription h-full flex overflow-hidden">
+  <lib-form
+    class="flex-grow-1 overflow-x-hidden overflow-y-auto p-3"
+    (valueChanged)="prescription = $event"
+  ></lib-form>
+
+  <div class="p-3 surface-200">
+    <div class="print mb-3 text-right">
+      <p-button label="Print" severity="secondary" (onClick)="print()" />
+    </div>
+
+    <lib-print
+      class="block pr-2 overflow-x-hidden overflow-y-auto"
+      style="height: calc(100% - 54px)"
+      [prescription]="prescription"
+    ></lib-print>
+  </div>
+</section>
