@@ -2,7 +2,9 @@
   "name": "@ng-projects/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:pms": "npx nx build patient-management-system"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.0.0",

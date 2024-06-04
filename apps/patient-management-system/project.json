@@ -10,7 +10,11 @@
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/patient-management-system",
+        "baseHref": "/ng-projects/",
+        "outputPath": {
+          "base": "docs",
+          "browser": ""
+        },
         "index": "apps/patient-management-system/src/index.html",
         "browser": "apps/patient-management-system/src/main.ts",
         "polyfills": ["zone.js"],
